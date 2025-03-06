@@ -1,30 +1,21 @@
-import UserCard from './UserCard.jsx';
-import UserList from './UserList.jsx';
-import lists from '../userlist.json';
-import Counter from './Counter.jsx';
+import LoginForm from './LoginForm.jsx';
+import SearchBar from './SearchBar.jsx';
+import LangSwitcher from './LangSwitcher.jsx';
+import { useState } from 'react';
 
 export default function App () {
-  const setCount = 
-  (setType) => {
-    updateCount((nextType) => ({
-       ...nextType,
-       [setType]:
-       nextType[setType] + 1,
-    }));
-  };
-const resetCount = () => {
-  updateCount({
-   
-  })}
+  const [lang, setLang] = useState("en");
+
+  const handleLogin = (userData) => {
+    console.log(userData);
+  }
+ 
   return (
     <>
-        <UserCard name="Alica" age="25" city="London" />
-        <UserList list={lists} />
-        <Counter 
-          setCount={setCount}
-          resetCount={resetCount}
-          updateCount={updateCount}
-        />
+     <LoginForm  onLogin={handleLogin}/>
+     <SearchBar/>
+     <p>Selected language: {lang}</p>
+     <LangSwitcher value={lang} onSelect={setLang}/>
     </>
       
   );
