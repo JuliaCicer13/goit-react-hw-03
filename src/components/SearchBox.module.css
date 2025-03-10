@@ -1,0 +1,19 @@
+.wrap{
+  display: block;
+  margin-left: 30px;
+}
+.label{
+    display: block;
+    color: black;
+}
+.input{
+    border:solid 1px;
+    border-radius: 3px;
+    border-color: indigo;
+}
+.input:hover{
+   border-color: blue;
+}
+.input:active{
+    border-color: aquamarine;
+}

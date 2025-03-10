@@ -4,7 +4,7 @@ import SearchBox from './SearchBox.jsx';
 import { useState } from 'react';
 
 export default function App () {
-  const [ users, setUsers ] = useState(
+  const [ users, setUsers, setInputValue ] = useState(
     [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
       {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
@@ -19,11 +19,17 @@ export default function App () {
       [...prevUsers, newContatc]);
   };
 
+
+  const handleChange = (newContatc) => {
+   setInputValue((prevUsers) => [
+    ...prevUsers, newContatc])
+  }
+
   return (
     <>
       <h1>Phonebook</h1>
       <ContactForm onClick={handleClick}/>
-      <SearchBox/>
+      <SearchBox onChange={handleChange}/>
       <ContactList users={users}/>     
     </>
       
