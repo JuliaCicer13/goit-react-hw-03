@@ -1,11 +1,10 @@
 import ContactForm from './ContactForm.jsx';
 import ContactList from './ContactList.jsx';
-import Contacts from './Contacts.jsx';
 import SearchBox from './SearchBox.jsx';
 import { useState } from 'react';
 
 export default function App () {
-  const [ values, setValues ] = useState(
+  const [ users, setUsers ] = useState(
     [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
       {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
@@ -14,19 +13,18 @@ export default function App () {
     ]
     );
   
-  const handleClick = () => {
-    // clicks = clicks + 1;
-		setValues(values + 1);
+  const handleClick = (newContatc) => {
+   
+		setUsers((prevUsers) =>
+      [...prevUsers, newContatc]);
   };
 
   return (
     <>
       <h1>Phonebook</h1>
       <ContactForm onClick={handleClick}/>
-      <ContactList />     
-      <Contacts/>
       <SearchBox/>
-   
+      <ContactList users={users}/>     
     </>
       
   );
