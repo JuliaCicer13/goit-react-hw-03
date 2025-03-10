@@ -1,74 +1,32 @@
-import LoginForm from './LoginForm.jsx';
-import SearchBar from './SearchBar.jsx';
-import LangSwitcher from './LangSwitcher.jsx';
+import ContactForm from './ContactForm.jsx';
+import ContactList from './ContactList.jsx';
+import Contacts from './Contacts.jsx';
+import SearchBox from './SearchBox.jsx';
 import { useState } from 'react';
 
 export default function App () {
-  const [lang, setLang] = useState("en");
-  const [coffeeSize, setCoffeeSize] = useState("sm");
-  const [hasAccepted, setHasAccepted] = useState(false);
-
-  const handleChange = (evt) => {
-    setHasAccepted(evt.target.checked);
+  const [ values, setValues ] = useState(
+    [
+      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+    ]
+    );
+  
+  const handleClick = () => {
+    // clicks = clicks + 1;
+		setValues(values + 1);
   };
 
-  const handleLogin = (userData) => {
-    console.log(userData);
-  }
-
-  const handleSizeChange = (evt) => {
-    setCoffeeSize(evt.target.value);
-  };
- 
   return (
     <>
-    <div>
-      <label>
-        <input   type="checkbox"
-          name="terms"
-          checked={hasAccepted}
-          onChange={handleChange} /> 
-				I accept terms and conditions
-      </label>
-      <button type="button" disabled={!hasAccepted}>
-        Proceed
-      </button>
-    </div>
-          <label>
-        <input 
-          type="radio"
-          name="coffeeSize"
-          value="sm"
-          checked={coffeeSize === "sm"}
-          onChange={handleSizeChange}
-        />
-  
-        Small
-      </label>
-      <label>
-        <input 
-          type="radio"
-          name="coffeeSize"
-          value="sm"
-          checked={coffeeSize === "sm"}
-          onChange={handleSizeChange}
-        />
-        
-        Meduim
-      </label>
-      <label>
-        <input 
-          type="radio"
-          name="coffeeSize"
-          value="lg"
-          checked={coffeeSize === "lg"} />
-               onChange={handleSizeChange}
-        Large
-      </label>
-     <LoginForm  onLogin={handleLogin}/>
-     <SearchBar/>
-     <p>Selected language: {lang}</p>
-     <LangSwitcher value={lang} onSelect={setLang}/>
+      <h1>Phonebook</h1>
+      <ContactForm onClick={handleClick}/>
+      <ContactList />     
+      <Contacts/>
+      <SearchBox/>
+   
     </>
       
   );

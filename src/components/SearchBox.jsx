@@ -1,5 +1,6 @@
 import { useState } from "react";
-export default function SearchBar () {
+
+export default function SearchBox () {
   const [inputValue, setInputValue] = useState("");
   const handleChange = (evt) => {
     setInputValue(evt.target.value);
