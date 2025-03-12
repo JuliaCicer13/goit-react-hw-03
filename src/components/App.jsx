@@ -4,7 +4,7 @@ import SearchBox from './SearchBox.jsx';
 import { useState } from 'react';
 
 export default function App () {
-  const [ users, setUsers, setInputValue ] = useState(
+  const [ users, setUsers, setInputValue, useEffect ] = useState(
     [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
       {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
@@ -14,17 +14,27 @@ export default function App () {
     );
   
   const handleClick = (newContatc) => {
-   
 		setUsers((prevUsers) =>
       [...prevUsers, newContatc]);
   };
 
 
-  const handleChange = (newContatc) => {
-   setInputValue((prevUsers) => [
-    ...prevUsers, newContatc])
-  }
+    const handleChange = (newContatc) => {
+      setInputValue((prevUsers) => [
+       ...prevUsers, newContatc])
+     }
+     
+    const savedUsers = window.localStorage.getItem("saved-clicks");
+    if (savedUsers !== null) {
+      return Number(savedUsers);
+    }
+ 
 
+  useEffect(() => {
+    window.localStorage.setItem("saved-users", users);
+  }, [users]);
+
+ 
   return (
     <>
       <h1>Phonebook</h1>
