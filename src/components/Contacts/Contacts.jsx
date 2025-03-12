@@ -2,7 +2,7 @@ import styles from './Contacts.module.css';
 import { FaPhone } from 'react-icons/fa';
 import { GiCat } from 'react-icons/gi';
 
-export default function Contacts ({name, number}) {
+export default function Contacts ({id, name, number, onDelete}) {
  return (
   <li className={styles.item}>
     <div className={styles.container}>
@@ -10,7 +10,8 @@ export default function Contacts ({name, number}) {
     <p className={styles.number}> <FaPhone className={styles.icon}/> {number}</p> 
     </div>
    
-    <button className={styles.button} type='submit'>Delete</button> 
+    <button onClick={() =>
+      onDelete(id)} className={styles.button} type='submit'>Delete</button> 
   </li>
         )
 }
