@@ -20,7 +20,7 @@ export default function App() {
 
   useEffect(() => {
     if (users.length === 0) {
-      localStorage.setItem("contacts", JSON.stringify(defaultContacts)); // Если пусто, записываем дефолтный массив
+      localStorage.setItem("contacts", JSON.stringify(defaultContacts)); 
       setUsers(defaultContacts);
     } else {
       localStorage.setItem("contacts", JSON.stringify(users));
@@ -36,9 +36,7 @@ export default function App() {
   };
 
   const handleDelete = (id) => {
-    const audio = new Audio('/sounds/hiss.mp3');
-    audio.play();
-
+  
     setTimeout(() => {
       setUsers((prevUsers) => {
         const updatedUsers = prevUsers.filter(user => user.id !== id);
