@@ -33,7 +33,7 @@ export default function ContactForm ({onSubmit}) {
                     <ErrorMessage className={css.error}  name="name" component="span" />
                 </div>
                 <div>
-                    <label className={css.formLabel} htmlFor="namber">Number</label>
+                    <label className={css.formLabel} htmlFor="number">Number</label>
                     <Field className={css.field} type="text" name="number" />
                     <ErrorMessage className={css.error}  name="number" component="span" />
                 </div>
